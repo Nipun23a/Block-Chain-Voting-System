@@ -30,7 +30,7 @@ contract VotingSystem{
         votingEnd =block.timestamp + (durationInMinutes * 1 minutes);
     }
 
-    function vote(uint256 candidateId) external {
+    function vote(uint256 candidateId) public {
         require(block.timestamp >= votingStart && block.timestamp < votingEnd, "Voting is not active");
         require(!voters[msg.sender],"You have already voted");
         require(candidateId < candidates.length, "Invalid candidate Id");
